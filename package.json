@@ -1,0 +1,24 @@
+{
+  "name": "vanilla-slider",
+  "version": "1.0.0",
+  "description": "image slider in pure vanilla js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Tsenzuk/VanillaSlider.git"
+  },
+  "author": "Tsenzuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tsenzuk/VanillaSlider/issues"
+  },
+  "homepage": "https://github.com/Tsenzuk/VanillaSlider#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "pug": "^2.0.0-beta6"
+  }
+}

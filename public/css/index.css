@@ -1,0 +1,81 @@
+body {
+  padding: 0;
+}
+
+#slider {
+  width: 1024px;
+  height: 768;
+  overflow: hidden;
+  /*overflow-y: scroll;*/
+  display: block;
+  padding: 1.4px;
+  line-height: 0;
+}
+
+#slider .slider-image {
+  width: 200px;
+  height: 200px;
+  margin: 1.4px;
+  /*display: inline-block;*/
+  float: left;
+}
+
+#slider .slider-image.active, #slider .slider-image.active::before {
+  /*height: 194px;
+  width: 194px;*/
+  /*border: 4px solid blue;*/
+}
+
+#slider .slider-image.active::before{
+  height: 194px;
+  width: 194px;
+  border: 5px solid blue;
+  
+  content: ' ';
+  display: block;
+  margin-top: -2px;
+  margin-left: -2px;
+  animation-duration: 0.5s;
+}
+
+#slider .slider-image.active.left::before{
+  animation-name: left;
+}
+
+#slider .slider-image.active.top::before{
+  animation-name: top;
+}
+
+#slider .slider-image.active.right::before{
+  animation-name: right;
+}
+
+#slider .slider-image.active.bottom::before{
+  animation-name: bottom;
+}
+
+
+.debug #slider, .debug .slider-image{
+  border: 1px solid black; /*for debug*/
+}
+
+/* The animation code */
+@keyframes left {
+    0%   {display:block; margin-left:204px;}
+    100%  {display:block; margin-left:-2px;}
+}
+
+@keyframes top {
+    0%   {display:block; margin-top:204px;}
+    100%  {display:block; margin-top:-2px;}
+}
+
+@keyframes right {
+    0%   {display:block; margin-left:-204px;}
+    100%  {display:block; margin-left:-2px;}
+}
+
+@keyframes bottom {
+    0%   {display:block; margin-top:-204px;}
+    100%  {display:block; margin-top:-2px;}
+}

@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    title!= title
+    link(href="/css/index.css", rel="stylesheet")
+    script(src="/js/index.js")
+  body.debug
+    #slider
+      - for (var x = 0; x < 50; x++)
+        img.slider-image(class=x==0 ? 'active' : '')
