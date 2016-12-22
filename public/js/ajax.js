@@ -26,7 +26,7 @@ window.ajax = (function () {
         var xhr = new XMLHttpRequest();
         params.xhr = xhr;
         xhr.open(params.method, params.url, true);
-        xhr.send(params.data);
+        xhr.send();
         xhr.onreadystatechange = function () { // (3)
           if (xhr.readyState != 4) return;
           params.complete();
