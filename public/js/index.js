@@ -1,6 +1,6 @@
 onDocumentReady(function () {
   var onKeyPress = function (e) {
-    // console.log(arguments);
+    var that = this;
     this.images.map(function (image) {
       image.classList.remove('active');
       image.classList.remove('left');
@@ -32,11 +32,44 @@ onDocumentReady(function () {
         console.log('Arrow Down')
         this.current += 5;
         additionalClass = 'bottom';
-        if (this.current - this.offset > 40) {
-          //TODO: add new images; remove old images; animate all
-        }
         break;
       }
+    }
+    if (this.current - this.offset >= 40) {
+      var animatableArray = Array.prototype.slice.call(this.root.querySelectorAll('img')).reverse().filter(function (img, i) {
+        return (i >= 20);
+      });
+      animate(animatableArray, { height: 0 }, 1000).then(function (animatableArray) {
+        animatableArray.forEach(function (img) {
+          img.parentNode.removeChild(img);
+        });
+        that.offset += 30;
+      }).then(function () {
+        for (var i = 0; i < 30; i++) {
+          var img = document.createElement('img');
+          img.classList.add('slider-image');
+          that.root.appendChild(img);
+        }
+        that.images = Array.prototype.slice.call(that.root.querySelectorAll('.slider-image'))
+      });
+    }
+    if (this.current > 10 && this.current - this.offset <= 10) {
+      var animatableArray = Array.prototype.slice.call(this.root.querySelectorAll('img')).filter(function (img, i) {
+        return (i >= 20);
+      });
+      animate(animatableArray, { height: 0 }, 1000).then(function (animatableArray) {
+        animatableArray.forEach(function (img) {
+          img.parentNode.removeChild(img);
+        });
+        that.offset -= 30;
+      }).then(function () {
+        for (var i = 0; i < 30; i++) {
+          var img = document.createElement('img');
+          img.classList.add('slider-image');
+          that.root.insertBefore(img, that.root.firstChild);
+        }
+        that.images = Array.prototype.slice.call(that.root.querySelectorAll('.slider-image'))
+      });
     }
     if (this.current < 0) {
       this.current = 0;
